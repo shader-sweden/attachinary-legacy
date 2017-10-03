@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir['spec/**/*']
 
   s.add_dependency 'rails', '>= 3.2', '< 5'
-  s.add_dependency 'cloudinary', '~> 1.1.0'
+  s.add_dependency 'cloudinary', '~> 1.7'
 end

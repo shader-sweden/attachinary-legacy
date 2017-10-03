@@ -1,6 +1,7 @@
 # Attachinary
 
 [![Gem Version](https://badge.fury.io/rb/attachinary.png)](http://badge.fury.io/rb/attachinary)
+[![Build Status](https://travis-ci.org/fabn/attachinary.svg?branch=rails5)](https://travis-ci.org/fabn/attachinary)
 
 _Note: v1 is not backward compatible. Refer to [wiki](https://github.com/assembler/attachinary/wiki/Upgrading-to-v1.0) on how to upgrade._
 

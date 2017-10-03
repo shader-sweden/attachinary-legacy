@@ -6,7 +6,7 @@ source 'http://rubygems.org'
 gemspec
 
 # Current stable version, actual version will be selected in CI by appraisal
-gem 'rails'
+gem 'rails', '~> 5.1.0'
 
 # used by the dummy application
 gem 'jquery-rails'

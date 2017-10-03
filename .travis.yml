@@ -6,6 +6,11 @@ cache: bundler
 # For testing mongoid integration
 services:
   - mongodb
+# Test against multiple rails versions
+gemfile:
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.0.gemfile
+  - gemfiles/rails_5.1.gemfile
 # Test both integrations
 env:
   - ATTACHINARY_ORM=active_record

@@ -2,9 +2,6 @@ module Attachinary
   module FileMixin
     def self.included(base)
       base.validates :public_id, :version, :resource_type, presence: true
-      if Rails::VERSION::MAJOR == 3
-        base.attr_accessible :public_id, :version, :width, :height, :format, :resource_type
-      end
       base.after_create  :remove_temporary_tag
       # In AR remote file deletion will be performed after transaction is committed
       if base.respond_to?(:after_commit)

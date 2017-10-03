@@ -17,13 +17,7 @@ module Attachinary
         options = Attachinary::Utils.process_options(options)
 
         attachinary_orm_definition(options)
-
-        # attr_accessible :photo
-        # attr_accessible :images
-        if Rails::VERSION::MAJOR == 3
-          attr_accessible :"#{options[:scope]}" if options[:accessible]
-        end
-
+        
         # def photo?
         #   photo.present?
         # end
@@ -60,6 +54,16 @@ module Attachinary
           end
         end
 
+      end
+
+      # Helper method to check for rails 4
+      def rails4?
+        Rails::VERSION::MAJOR == 4
+      end
+
+      # Helper method to check for rails 5
+      def rails5?
+        Rails::VERSION::MAJOR == 5
       end
 
     end

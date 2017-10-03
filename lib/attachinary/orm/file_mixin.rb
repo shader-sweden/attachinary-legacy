@@ -1,14 +1,17 @@
 module Attachinary
   module FileMixin
-    def self.included(base)
-      base.validates :public_id, :version, :resource_type, presence: true
-      base.after_create  :remove_temporary_tag
+    # Use active support to define mixin
+    extend ActiveSupport::Concern
+    # When included
+    included do
+      validates :public_id, :version, :resource_type, presence: true
+      after_create :remove_temporary_tag
       # In AR remote file deletion will be performed after transaction is committed
-      if base.respond_to?(:after_commit)
-        base.after_commit :destroy_file, on: :destroy
+      if respond_to?(:after_commit)
+        after_commit :destroy_file, on: :destroy
       else
         # Mongoid does not support after_commit
-        base.after_destroy :destroy_file
+        after_destroy :destroy_file
       end
     end
 
@@ -29,13 +32,13 @@ module Attachinary
       format = options.delete(:format)
       Cloudinary::Utils.cloudinary_url(path(format), options.reverse_merge(:resource_type => resource_type))
     end
-    
-  protected
+
+    protected
     def keep_remote?
-      Cloudinary.config.attachinary_keep_remote == true
+      !!Cloudinary.config.attachinary_keep_remote
     end
-    
-  private
+
+    private
     def destroy_file
       Cloudinary::Uploader.destroy(public_id) if public_id && !keep_remote?
     end

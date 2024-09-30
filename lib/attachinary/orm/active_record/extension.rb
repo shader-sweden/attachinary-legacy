@@ -9,7 +9,7 @@ module Attachinary
 
       # has_many :photo_files, ...
       # has_many :image_files, ...
-      if rails4? || rails5?
+      if rails4? || rails5? || rails6?
         has_many :"#{relation}",
                  -> { where scope: options[:scope].to_s },
                  as: :attachinariable,

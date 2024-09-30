@@ -66,6 +66,10 @@ module Attachinary
         Rails::VERSION::MAJOR == 5
       end
 
+      # Helper method to check for rails 5
+      def rails6?
+        Rails::VERSION::MAJOR == 6
+      end
     end
   end
 end

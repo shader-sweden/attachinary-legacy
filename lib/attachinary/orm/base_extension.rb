@@ -72,7 +72,7 @@ module Attachinary
       end
 
        # Helper method to check for rails 7
-      def rails6?
+      def rails7?
         Rails::VERSION::MAJOR == 7
       end
     end
